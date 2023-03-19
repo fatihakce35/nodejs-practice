@@ -23,7 +23,7 @@ app.use(express.static('public'))
 app.use("/", router)
 
 
-/*
+/* old
 app.get("/", (req, res) => {
     res.render("index")
 })
