@@ -1,19 +1,29 @@
 import express from "express"
+import "dotenv/config"
+import connection from "./mongo_db.js"
+
+import router from "./routers/pageRouter.js"
 
 const app = express()
-const port = 3000
-
 
 //template engine
 app.set("view engine", "ejs")
 
 
+
+//connection to our db
+connection()
+
 //static files
 app.use(express.static('public'))
 
 
+//routes. so we can make it easier to route
+
+app.use("/", router)
 
 
+/*
 app.get("/", (req, res) => {
     res.render("index")
 })
@@ -24,8 +34,10 @@ app.get("/about", (req, res) => {
     res.render("about")
 })
 
+*/
 
-app.listen(port, () => {
-    console.log(`Server running on port: ${port}`)
+
+app.listen(process.env.port, () => {
+    console.log(`Server running on port: ${process.env.port}`)
 
 })
