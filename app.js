@@ -3,6 +3,7 @@ import "dotenv/config"
 import connection from "./mongo_db.js"
 
 import router from "./routers/pageRouter.js"
+import photoRoute from "./routers/photoRouter.js"
 
 const app = express()
 
@@ -21,6 +22,7 @@ app.use(express.static('public'))
 //routes. so we can make it easier to route
 
 app.use("/", router)
+app.use("/photo", photoRoute)
 
 
 /* old
