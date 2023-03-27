@@ -21,8 +21,9 @@ app.use(express.static('public'))
 
 //routes. so we can make it easier to route
 
+app.use(express.json())
 app.use("/", router)
-app.use("/photo", photoRoute)
+app.use("/photos", photoRoute)
 
 
 /* old
