@@ -18,9 +18,8 @@ const photoSchema = new Schema({
         type: Date,
         default: Date.now
     }
-
 })
 
-const Photo = mongoose.model("Photo", photoSchema)
+const Photo = mongoose.model("photos", photoSchema)
 
 export default Photo

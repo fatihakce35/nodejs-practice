@@ -6,10 +6,10 @@ import router from "./routers/pageRouter.js"
 import photoRoute from "./routers/photoRouter.js"
 
 const app = express()
-
+   
 //template engine
 app.set("view engine", "ejs")
-
+  
 
 
 //connection to our db
@@ -17,13 +17,14 @@ connection()
 
 //static files
 app.use(express.static('public'))
-
+ 
 
 //routes. so we can make it easier to route
 
 app.use(express.json())
 app.use("/", router)
 app.use("/photos", photoRoute)
+app.use
 
 
 /* old
@@ -38,8 +39,8 @@ app.get("/about", (req, res) => {
 })
 
 */
-
-
+ 
+ 
 app.listen(process.env.port, () => {
     console.log(`Server running on port: ${process.env.port}`)
 
