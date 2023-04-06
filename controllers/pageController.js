@@ -10,4 +10,11 @@ const getAboutPage = (req, res) => {
     })
 }
 
-export {getMainPage, getAboutPage}
+//render page
+const getRegisterPage = async (req, res) => {
+    res.render("register", { link: "register"})
+   
+    
+}
+
+export {getMainPage, getAboutPage, getRegisterPage}

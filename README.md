@@ -22,3 +22,6 @@ We've modifyed html files in views. Added post/get request in our code by "photo
 we made photo page dynmaic. photo name, description comes from our db.
 a new ejs file created
 
+# Lesson 5
+created a user form to register. Created user register model in mongodb. Added "register.ejs" and rendering page. Added "post" request to user register
+

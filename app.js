@@ -4,6 +4,7 @@ import connection from "./mongo_db.js"
 
 import router from "./routers/pageRouter.js"
 import photoRoute from "./routers/photoRouter.js"
+import userRouter from "./routers/userRouter.js"
 
 const app = express()
    
@@ -22,10 +23,15 @@ app.use(express.static('public'))
 //routes. so we can make it easier to route
 
 app.use(express.json())
+
+// adding this feature because of getting data from html data
+app.use(express.urlencoded({extended: true}))
 app.use("/", router)
 app.use("/photos", photoRoute)
-app.use
 
+// user register router
+
+app.use("/users", userRouter)
 
 /* old
 app.get("/", (req, res) => {
