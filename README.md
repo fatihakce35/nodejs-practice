@@ -25,3 +25,7 @@ a new ejs file created
 # Lesson 5
 created a user form to register. Created user register model in mongodb. Added "register.ejs" and rendering page. Added "post" request to user register
 
+# Lesson 6
+added a login page. Getting username and password from /login page. and compare them same or not
+
+

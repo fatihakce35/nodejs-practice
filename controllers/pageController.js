@@ -17,4 +17,11 @@ const getRegisterPage = async (req, res) => {
     
 }
 
-export {getMainPage, getAboutPage, getRegisterPage}
+
+//login page render
+
+const getLoginPage = async (req, res) => {
+    res.render("login", {link: "login"})
+}
+
+export {getMainPage, getAboutPage, getRegisterPage, getLoginPage}
