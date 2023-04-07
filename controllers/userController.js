@@ -43,17 +43,21 @@ const getUser = async (req, res) => {
         }
 
         if (same) { //if user founded and password is match then succed
-            res.status(201).json({
-                succeded: true,
-                message: `logging as ${username}`,
-                user_info: user,
-                token: createToken(user._id)
+            const token = createToken(user._id) //savng token in cookies
+            res.cookie("jwt", token, {
+                httpOnly: true,
+                maxAge: 100*60*60*24
+
             })
+
+            res.redirect("dashboard")
+                
+            
         } else {
             return res.status(401).json({ //else responding error
                 succeded: false,
                 message: "password incorrect !"
-            })
+            }).redirect("/login")
             
         }
 
@@ -78,5 +82,11 @@ const createToken = (userId) => {
 
 }
 
+const getDashboard = (req, res) => {
+    res.render("dashboard", {
+        link: "dashboard"
+    })
+}
 
-export {createUser, getUser}
+
+export {createUser, getUser, getDashboard}

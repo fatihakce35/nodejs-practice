@@ -31,3 +31,6 @@ added a login page. Getting username and password from /login page. and compare 
 # Lesson 7
 added Authentication, Authorization, JSON WEB TOKEN
 
+# Lesson 8
+added cookie parser. We saved our tokens in cookie. SO we could stay login. And we got our tokens in cookies.
+

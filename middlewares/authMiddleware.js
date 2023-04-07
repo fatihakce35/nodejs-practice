@@ -1,24 +1,35 @@
 import jwt from "jsonwebtoken"
 import User from "../models/userModel.js"
+import cookie from "cookie-parser"
 
 const authenticateToken = async (req, res, next) => {
-    const authHeader = req.headers["authorization"]
-    console.log(`Auth: ${authHeader}`)
+    try {
+        const token = req.cookies.jwt //getting token from cookies
 
-    const token = authHeader && authHeader.split(" ")[1] //getting token
+        if (token) {
+            jwt.verify(token, process.env.jwt_key, err => { //token check
+                if (err) {
+                    console.log(err)
+                    res.redirect("/login") 
+                }
+                else {
+                    next()
+                }
+                
+            })
 
-    if (!token) {
-        res.status(401).json({
-            succeeded: false,
-            message: "No token set" 
-        })
+        } else {
+            res.redirect("/login")
+        }
     }
 
-    req.user = await User.findById(
-        jwt.verify(token, process.env.jwt_key).userId //decode the token
-    )
+    catch (error) {
+        res.status(401).json({
+            succedeed: false,
+            error
 
-    next() 
+        })
+    }
 }
 
 export {authenticateToken}

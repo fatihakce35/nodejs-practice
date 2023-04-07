@@ -1,6 +1,7 @@
 import express from "express"
 import "dotenv/config"
 import connection from "./mongo_db.js"
+import cookie from "cookie-parser"
 
 import router from "./routers/pageRouter.js"
 import photoRoute from "./routers/photoRouter.js"
@@ -23,6 +24,7 @@ app.use(express.static('public'))
 //routes. so we can make it easier to route
 
 app.use(express.json())
+app.use(cookie())
 
 // adding this feature because of getting data from html data
 app.use(express.urlencoded({extended: true}))
