@@ -28,4 +28,6 @@ created a user form to register. Created user register model in mongodb. Added "
 # Lesson 6
 added a login page. Getting username and password from /login page. and compare them same or not
 
+# Lesson 7
+added Authentication, Authorization, JSON WEB TOKEN
 

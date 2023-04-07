@@ -1,5 +1,6 @@
 import User from "../models/userModel.js"
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 //post request
 const createUser = async (req, res) => {
@@ -44,7 +45,9 @@ const getUser = async (req, res) => {
         if (same) { //if user founded and password is match then succed
             res.status(201).json({
                 succeded: true,
-                message: `logging as ${username}`
+                message: `logging as ${username}`,
+                user_info: user,
+                token: createToken(user._id)
             })
         } else {
             return res.status(401).json({ //else responding error
@@ -66,5 +69,14 @@ const getUser = async (req, res) => {
     }
     
 }
+
+// creating a json web token
+const createToken = (userId) => {
+    return jwt.sign({userId}, process.env.jwt_key, {
+        expiresIn: "1d"
+    })
+
+}
+
 
 export {createUser, getUser}
