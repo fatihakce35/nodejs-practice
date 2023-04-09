@@ -6,12 +6,9 @@ import jwt from "jsonwebtoken"
 const createUser = async (req, res) => {
 
     try {
-       
+        
         const user = await User.create(req.body)
-        res.status(201).json({
-            succeded: true,
-            user
-        }) 
+        res.redirect("/login")
 
     }
     catch(error) {
@@ -84,7 +81,8 @@ const createToken = (userId) => {
 
 const getDashboard = (req, res) => {
     res.render("dashboard", {
-        link: "dashboard"
+        link: "dashboard",
+        user: res.locals.user
     })
 }
 

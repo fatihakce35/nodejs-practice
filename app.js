@@ -2,11 +2,11 @@ import express from "express"
 import "dotenv/config"
 import connection from "./mongo_db.js"
 import cookie from "cookie-parser"
-
+ 
 import router from "./routers/pageRouter.js"
-import photoRoute from "./routers/photoRouter.js"
+import photoRoute from "./routers/photoRouter.js" 
 import userRouter from "./routers/userRouter.js"
-
+import { checkUser } from "./middlewares/authMiddleware.js"
 const app = express()
    
 //template engine
@@ -29,11 +29,12 @@ app.use(cookie())
 // adding this feature because of getting data from html data
 app.use(express.urlencoded({extended: true}))
 app.use("/", router)
-app.use("/photos", photoRoute)
+app.use("/photos", photoRoute) 
 
-// user register router
+// user register router 
 
 app.use("/users", userRouter)
+app.get("*", checkUser)
 
 /* old
 app.get("/", (req, res) => {

@@ -24,4 +24,11 @@ const getLoginPage = async (req, res) => {
     res.render("login", {link: "login"})
 }
 
-export {getMainPage, getAboutPage, getRegisterPage, getLoginPage}
+const getLogoutPage = async (req, res) => {
+    res.cookie("jwt", "", {
+        maxAge:1
+    })
+    res.redirect("/")
+}
+
+export {getMainPage, getAboutPage, getRegisterPage, getLoginPage, getLogoutPage}
